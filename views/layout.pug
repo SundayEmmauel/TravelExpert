@@ -1,0 +1,123 @@
+doctype html
+html
+  head
+    title= pagetitle
+    
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    // Bootstrap CSS
+    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
+
+    link(rel='stylesheet', href='/stylesheets/styles.css')
+  body
+
+   
+    // --------------- registration and login tabs -------------------
+    ul.nav.btn-lg.justify-content-end
+      
+      if !currentUser
+        li.nav-item
+          a.nav-link(href='/register/login') Login
+        li.nav-item
+          a.nav-link.active(href='/register') Register
+        li.nav-item
+          a.nav-link(href='/register/login') Agents Login
+      else
+        h2.fw-bold.fst-italic.me-5 
+          | Welcome back #{currentUser.fname} #{currentUser.lname}
+        li.nav-item
+          a.me-5.btn.btn-outline-primary.btn-lg(href='/log-out') Logout 
+
+    // ----------------------- Navbar -------------------------
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+      .container-fluid
+        a.navbar-brand(href='#')
+          img.d-inline-block.align-text-top(src='/images/logo4.png' alt='Logo' width='30' height='24')
+          |                 TravelExpert4
+        // <a class="navbar-brand" href="#">Navbar</a>
+        button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+          ul.navbar-nav.me-auto.mb-2.mb-lg-0
+            li.nav-item
+              a.nav-link.active.btn-lg(aria-current='page' href='/') Home
+            li.nav-item
+              a.nav-link.active.btn-lg(href='about') About us
+            li.nav-item.dropdown
+              a#navbarDropdown.nav-link.dropdown-toggle.btn-lg(href='services' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+                | Services
+              ul.dropdown-menu(aria-labelledby='navbarDropdown')
+                li
+                  a.dropdown-item(href='packages') Vacation Packages
+                li
+                  hr.dropdown-divider
+                li
+                  a.dropdown-item(href='flight') Flights
+                li
+                  a.dropdown-item(href='cars') Cars
+            li.nav-item
+              a.nav-link.active.btn-lg(href='/contact_us') Contact us
+          form.d-flex
+            input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
+            button.btn.btn-outline-light(type='submit') Search
+
+      
+    block content
+
+
+    .container
+      if errors
+        ul
+          each error in errors
+            li.alert.alert-danger.m3= error
+  
+    .container
+     
+      // -------------------------------- Footer Section ------------------------------------
+    footer.text-center.text-white
+      // Grid container
+      .container.p-4
+        // Section: Images
+        section
+          .row
+            .col-lg-2.col-md-12.mb-4.mb-md-0
+              .bg-image.hover-overlay.ripple.shadow-1-strong.rounded(data-ripple-color='light')
+                img.w-100(src='https://mdbootstrap.com/img/new/fluid/city/113.jpg')
+                a(href='#!')
+                  .mask(style='background-color: rgba(251, 251, 251, 0.2);')
+            .col-lg-2.col-md-12.mb-4.mb-md-0
+              .bg-image.hover-overlay.ripple.shadow-1-strong.rounded(data-ripple-color='light')
+                img.w-100(src='https://mdbootstrap.com/img/new/fluid/city/111.jpg')
+                a(href='#!')
+                  .mask(style='background-color: rgba(251, 251, 251, 0.2);')
+            .col-lg-2.col-md-12.mb-4.mb-md-0
+              .bg-image.hover-overlay.ripple.shadow-1-strong.rounded(data-ripple-color='light')
+                img.w-100(src='https://mdbootstrap.com/img/new/fluid/city/112.jpg')
+                a(href='#!')
+                  .mask(style='background-color: rgba(251, 251, 251, 0.2);')
+            .col-lg-2.col-md-12.mb-4.mb-md-0
+              .bg-image.hover-overlay.ripple.shadow-1-strong.rounded(data-ripple-color='light')
+                img.w-100(src='https://mdbootstrap.com/img/new/fluid/city/114.jpg')
+                a(href='#!')
+                  .mask(style='background-color: rgba(251, 251, 251, 0.2);')
+            .col-lg-2.col-md-12.mb-4.mb-md-0
+              .bg-image.hover-overlay.ripple.shadow-1-strong.rounded(data-ripple-color='light')
+                img.w-100(src='https://mdbootstrap.com/img/new/fluid/city/115.jpg')
+                a(href='#!')
+                  .mask(style='background-color: rgba(251, 251, 251, 0.2);')
+            .col-lg-2.col-md-12.mb-4.mb-md-0
+              .bg-image.hover-overlay.ripple.shadow-1-strong.rounded(data-ripple-color='light')
+                img.w-100(src='https://mdbootstrap.com/img/new/fluid/city/116.jpg')
+                a(href='#!')
+                  .mask(style='background-color:blue')
+        // Section: Images
+      // Grid container
+      // Copyright
+      .text-center.p-3(style='background-color: rgba(9, 69, 236, 0.911);')
+        | &copy; 2021 Copyright:
+        a.text-white(href='/') TravelExpert4.com
+      // Copyright 
+
+
+      // Option 1: Bootstrap Bundle with Popper
+      script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous')

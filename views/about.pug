@@ -1,0 +1,65 @@
+extends layout
+
+block content
+ 
+     
+  // Background image
+  .p-5.text-center.bg-image(style="\
+  background-image: url('images/beach003.jpg');\
+  height: 400px;\
+  ")
+    .mask(style='background-color: rgba(0, 0, 0, 0.2);')
+      .d-flex.justify-content-center.align-items-center.h-100
+        .text-white
+          h2.mb-3
+            | &quot;-Your reliable travel expert-&quot;
+            h1.mb-3.display-1 About us
+            a.btn.btn-outline-light.btn-lg(href='packages' role='button') Vacation Packages
+  // -------------------------------- END OF HEADER TAB OR BANNER -----------------------------
+  header
+    // Menu Bar Navagation
+    // <div class="about-section">
+    .mx-auto(style='width: 600px;')
+      // <h1>About Us</h1>
+      br
+      p
+        | We are a group of friendly and energetic travel experts who are willing to help you find the best deals
+        | for your dream vacation.
+        | Thank you for visiting our website and we wish you a safe and enjoyable trip no
+        | matther where
+        | you plan to go.
+    h2(style='text-align:center') Our Services
+    br
+    // <div style="padding: 0 16px; ">
+    .container-fluid(style='width: 100%')
+      .row.row-cols-1.row-cols-md-3.g-4
+        .col
+          .card.h-100(style='width: 18rem;')
+            img(src=' images/Hotel-6513_501.jpg' alt='Hotel' style='width:100%')
+            .container-sm
+              h2 Luxury Hetels
+              p.title Makes You Feel Like Home!
+              p
+                | You can leave your favorate pillow at home, and enjoy our unmatched room services.
+              br
+              a.btn.btn-primary(href='/hotel')  Click Me!
+        .col
+          .card(style='width: 18rem;')
+            img(src='images/LasVegas_401x320.jpg' alt='Packages' style='width:100%')
+            .container-sm
+              h2 Travel Packages 
+              p.title Best Deals You&apos;ve Ever Seen!
+              p Enjoy some special packages for families and seniors.
+              br
+              a.btn.btn-primary(href='/packages')  Click Me!
+        .col
+          .card.h-100(style='width: 18rem;')
+            img(src='images/CarRental(960x540).jpg' alt='cars' style='width:100%')
+            .container-sm
+              h2 Car Rental
+              p.title Plenty of Selections
+              p
+                | Our service provider picks you up and drops you off to and from the same location.
+              br
+              a.btn.btn-primary(href='/cars')  Click Me!
+    // -------------------------------- END OF HEADER TAB OR BANNER -----------------------------

@@ -1,0 +1,44 @@
+doctype html
+head
+  // Required meta tags
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  // css/styles
+  // <link rel="stylesheet" href="css/main.css" />
+  link(rel='stylesheet' href='stylesheets/page404.css')
+  title 404 Page
+// Wrapper
+#wrapper
+  // Header
+  header#header
+    .logo
+      span.icon
+    .content
+      .inner
+        h1(style='color:green') 404
+        p
+        h2(style='color:green') Sorry. Page not found!
+        br
+        h2(style='color:red')
+          | But you could go back to our homepage by
+          | click the &quot;HOMEPAGE&quot; button!
+        p
+    nav
+      ul
+        li(style='color:green')
+          a(href='/') Homepage
+        li(style='color:green')
+          a(href='contact_us')
+            | Contact
+            | us
+        li(style='color:green')
+          a(href='about')
+            | About
+            | us
+  // Footer
+  footer#footer
+    p.copyright &copy; Design: TravelExpert4
+// Scripts
+//script(src='/skel.min.js')
+//script(src='/util.js')
+//script(src='/main.js')

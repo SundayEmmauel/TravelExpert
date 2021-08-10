@@ -1,0 +1,54 @@
+extends layout
+
+block content
+ 
+  // Background image
+  .p-5.text-center.bg-image(style="\
+  background-image: url('images/beach003.jpg');\
+  height: 400px;\
+  ")
+    .mask(style='background-color: rgba(0, 0, 0, 0.2);')
+      .d-flex.justify-content-center.align-items-center.h-100
+        .text-white
+          h2.mb-3
+            | &quot;-Your reliable travel expert-&quot;
+            h1.mb-3.display-1 Contact Us
+            a.btn.btn-outline-light.btn-lg(href='packages' role='button') Vacation Packages
+  // -------------------------------- END OF HEADER TAB OR BANNER -----------------------------
+
+  .body1.container-fluid
+    br
+    .regform
+      h1.display-5.text-primary Contact form
+    .main
+      
+  
+      form.row.g-3(method = "POST" action="/contact_us")
+        if errors
+            ul
+              each error in errors
+                li.alert.alert-danger.m3= error
+
+        .col-md-12
+          label.form-label.text-light(for='exampleFormControlInput1') Name
+          input#exampleFormControlInput1.form-control(type='text' placeholder='Your Name' name = "name")
+          br
+        .col-md-12
+          label.form-label.text-light(for='exampleFormControlInput1') Email address
+          input#exampleFormControlInput1.form-control(type='email' placeholder='example@gmail.com' name = "email")
+          br
+        .col-12
+          label.form-label.text-light(for='exampleFormControlInput1') Comment 
+          textarea#inputdescription.form-control(rows='6' style="height: 200px" type='textarea' placeholder='Leave a coment here' name = "comment")
+          br
+          button.btn.btn-primary.col-12.mt-4.form-control-lg(type='submit') Submit
+    br 
+      //- if contactdetails
+      //-   each detail in contactdetails
+      //-     p #{detail.name}
+      //-     p #{detail.email}
+      //-     p #{detail.comment}
+    
+    
+
+

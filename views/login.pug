@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  
+  //-------------------------------- Background image
+
+  .p-5.text-center.bg-image(style="\
+    background-image: url('../images/beach003.jpg');\
+    height: 400px;\
+    ")
+    .mask(style='background-color: rgba(0, 0, 0, 0.2);')
+      .d-flex.justify-content-center.align-items-center.h-100
+        .text-white
+          h2.mb-3
+            | &quot;-Welcome to Travel ExperT4-&quot;
+            h1.mb-3.display-1 Please Login to your account 
+            a.btn.btn-outline-light.btn-lg(href='packages' role='button') Vacation Packages
+
+
+  //----------------- Registration form-------------
+  if !hideLogin
+    .body1.container-fluid
+      br
+      .regform
+        h1.display-5.text-primary Please Login
+      .main
+        br
+        p
+        form(method='POST' action='/register/login')
+          .form1.row.g-3 
+            if errors
+              ul
+                each error in errors
+                  li.alert.alert-danger.m3= error
+                  
+            .col-md-6 
+              label.form-label.text-light(for='inputUsername4') User Name
+              input#inputUsername4.form-control(type='text' placeholder='Enter your Username' name="username")
+            .col-md-6  
+              label.form-label.text-light(for='inputPassword4') Password
+              input#inputPassword4.form-control(type='password'  name="password")
+          
+            .col-12     
+              button.col-12.btn.btn-primary.btn-lg(type='submit') Login
+
+            p.h4.text-light Don't have an account? register here.
+            a.bg-light.btn-lg(href="/register") Register 
+              p 
+            
+      br

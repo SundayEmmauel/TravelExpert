@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  // ----------------------- Navbar -------------------------
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+    .container-fluid
+      a.navbar-brand(href='#')
+        img.d-inline-block.align-text-top(src='images/flight0.jpg' alt='Logo' width='30' height='24')
+        |                 TravelExpert4
+      // <a class="navbar-brand" href="#">Navbar</a>
+      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.me-auto.mb-2.mb-lg-0
+          li.nav-item
+            a.nav-link.active(aria-current='page' href='/') Home
+          li.nav-item
+            a.nav-link.active(href='about') About us
+          li.nav-item
+            a.nav-link.active(href='contact_us') Contact us
+          li.nav-item.dropdown
+            a#navbarDropdown.nav-link.dropdown-toggle(href='services' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+              | Services
+            ul.dropdown-menu(aria-labelledby='navbarDropdown')
+              li
+                a.dropdown-item(href='packages') Vacation Packages
+              li
+                hr.dropdown-divider
+              li
+                a.dropdown-item(href='flight') Flights
+              li
+                a.dropdown-item(href='cars') Cars
+        form.d-flex
+          input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
+          button.btn.btn-outline-light(type='submit') Search
+  // Background image
+  .p-5.text-center.bg-image(style="\
+  background-image: url('images/beach003.jpg');\
+  height: 400px;\
+  ")
+    .mask(style='background-color: rgba(0, 0, 0, 0.2);')
+      .d-flex.justify-content-center.align-items-center.h-100
+        .text-white
+          h2.mb-3
+            | &quot;-Your reliable travel expert-&quot;
+            h1.mb-3.display-1 Thank you for Registering with us.
+            a.btn.btn-outline-light.btn-lg(href='packages' role='button') Vacation Packages
+  // -------------------------------- END OF HEADER TAB OR BANNER -----------------------------
+  
+
