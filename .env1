@@ -1,0 +1,4 @@
+PORT=8777
+PASSPORT_SECRET="sdmfosjfpiosdhnpjknspjihspd"
+MongoURL="mongodb+srv://student_1:desktop890@cluster0.p9dmi.mongodb.net/testStore?retryWrites=true&w=majority"
+DATA_URL="#"
