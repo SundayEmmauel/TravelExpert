@@ -9,11 +9,16 @@ html
     link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
 
     link(rel='stylesheet', href='/stylesheets/styles.css')
+
+    link(rel='apple-touch-icon' sizes='180x180' href='/images/icon/apple-touch-icon.png')
+    link(rel='icon' type='image/png' sizes='32x32' href='/images/icon/favicon-32x32.png')
+    link(rel='icon' type='image/png' sizes='16x16' href='/images/icon/favicon-16x16.png')
+    link(rel='manifest' href='/site.webmanifest')
   body
 
    
     // --------------- registration and login tabs -------------------
-    ul.nav.btn-md.justify-content-end
+    ul.nav.btn-lg.justify-content-end
       
       if !currentUser
         li.nav-item
@@ -23,8 +28,16 @@ html
         li.nav-item
           a.nav-link(href='/register/login') Agents Login
       else
+        
         h2.fw-bold.fst-italic.me-5 
           | Welcome back #{currentUser.fname} #{currentUser.lname}
+
+        //- if the user is logged in as a manager
+        if currentUser.role === 'manager'
+          //- p.fw-bold Click here to view
+          li.nav-item.me-5.btn-lg
+            a.nav-link(href='/data') View Business Performance
+
         li.nav-item
           a.me-5.btn.btn-outline-primary.btn-lg(href='/log-out') Logout 
 
@@ -55,8 +68,22 @@ html
                   a.dropdown-item(href='flight') Flights
                 li
                   a.dropdown-item(href='cars') Cars
-            li.nav-item
-              a.nav-link.active.btn-lg(href='/contact_us') Contact us
+            
+            if currentUser
+              if currentUser.role ='manager'
+            
+                li
+                  a.nav-link.active.btn-lg(href='/product/add') Add Package
+            else
+              li.nav-item
+                a.nav-link.active.btn-lg(href='/contact_us') Contact us
+
+
+            //- if currentUser !== 'manager'
+            //-   li
+            //-     a.nav-link.active.btn-lg(href='/product/add') Add Package
+            //- else
+              
           form.d-flex
             input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
             button.btn.btn-outline-light(type='submit') Search
@@ -66,10 +93,12 @@ html
 
 
     .container
-      if errors
-        ul
-          each error in errors
-            li.alert.alert-danger.m3= error
+      if errors    
+        each error in errors
+            p.alert.alert-danger= error
+    .content.my-3
+      if message
+        .alert.alert-success= message
   
     .container
      
