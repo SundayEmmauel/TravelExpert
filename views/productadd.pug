@@ -1,0 +1,64 @@
+extends layout
+
+block content
+
+  //-------------------------------- Background image
+
+  .p-5.text-center.bg-image(style="\
+    background-image: url('/images/beach003.jpg');\
+    height: 400px;\
+    ")
+    .mask(style='background-color: rgba(0, 0, 0, 0.2);')
+      .d-flex.justify-content-center.align-items-center.h-100
+        .text-white
+          h2.mb-3
+            | &quot;-Welcome to Travel ExperT4-&quot;
+            h1.mb-3.display-1 Please Register here
+            a.btn.btn-outline-light.btn-lg(href='packages' role='button') Vacation Packages
+
+
+  //----------------- Add New Package form-------------
+
+  .body1.container-fluid
+    br
+    .regform
+      h1.display-5.text-primary New Package form
+    .main
+      br
+      p
+
+
+
+      h1= title
+      if add
+        h3.text-light Please add new Travel Package
+      else 
+        h3 Edit Package
+      form.row.g-3(method='POST' action="")
+        .col-md-6
+          label.form-label.text-light(for='inputname') Name
+          input#inputname.form-control(type='text' name='name' required value= prod && prod.name)
+        .col-md-6
+          label.form-label.text-light(for='inputprice') Price
+          input#inputprice.form-control(type='number' placeholder='0.0' step="any" name='price' required  value=prod && prod.price)
+        .col-12
+          label.form-label.text-light(for='inputdescription') Description
+          textarea#inputdescription.form-control(rows="3" name='description')
+            | #{prod && prod.description}
+        .col-md-6
+          label.form-label.text-light(for='inputimage') Image
+          input#inputimage.form-control(type='text' placeholder='image.jpg' name='image'  value=prod && prod.image)    
+        .col-md-6
+          button.btn.btn-primary.col-12.mt-4(type='submit') 
+            if add
+              | Add
+            else 
+              | Update
+          a.btn.btn-primary.col-12.mt-4(href=add ? '/' : '/product/details/' + (prod && prod._id)) Cancel
+          // Another way for doing the cancel button
+            if add
+              a.btn.btn-primary.col-12.mt-4(href= '/' ) Cancel
+            else 
+              a.btn.btn-primary.col-12.mt-4(href='/product/details/'+prod._id) Cancel
+
+      
