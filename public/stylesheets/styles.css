@@ -112,7 +112,7 @@ body {
 }
 
 .regform {
-    width: 50%;
+    width: 60%;
     background-color: rgb(0, 0, 0, 0.6);
     margin: auto;
     color: #fff;
@@ -123,9 +123,11 @@ body {
 
 .main {
     background-color: rgb(0, 0, 0, 0.7);
-    width: 50%;
+    width: 60%;
+    height: auto;
     margin: auto;
     margin-bottom: 2%;
+    padding: 10px;
     border-radius: 0px 0px 15px 15px;
 }
 

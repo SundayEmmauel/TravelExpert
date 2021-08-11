@@ -10,6 +10,8 @@ var contact_usRouter = require('./routes/contact_us');
 var aboutRouter = require('./routes/about');
 var registerRouter = require('./routes/register');
 var registerRouter = require('./routes/register');
+var dataRouter = require("./routes/data");
+var productsRouter = require("./routes/product");
 
 const mongoSanitize = require("express-mongo-sanitize");
 
@@ -48,13 +50,15 @@ app.use('/users', usersRouter);
 app.use('/about', aboutRouter);
 app.use('/contact_us', contact_usRouter);
 app.use('/register', registerRouter);
+app.use("/data", dataRouter);
+app.use("/product", productsRouter);
 
 // -------------------------------------------------------------
 // Configure the DB connection using Mongoose
 var mongoose = require("mongoose");
 // Set up a mongoose connection
-var mongoDBurl = "mongodb://localhost:27017/newStore";
-// var mongoDBurl = "mongodb+srv://student_1:desktop890@cluster0.p9dmi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+// var mongoDBurl = "mongodb://localhost:27017/travelStore";
+var mongoDBurl = "mongodb+srv://student_1:desktop890@cluster0.p9dmi.mongodb.net/myTravelStore?retryWrites=true&w=majority";
 
 mongoose.connect(process.env.MONGO_URL || mongoDBurl, {
   useNewUrlParser: true,
