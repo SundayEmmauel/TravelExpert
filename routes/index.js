@@ -9,6 +9,14 @@ router.get('/', function (req, res, next) {
     pagetitle: 'Home',
     dt: (new Date()).toString(),
   });
+
+  if (req.user)
+    req.user.userDetails.then((details) => {
+      console.log("Index back", details);
+    });
+  Product.find({}, (err, products) => {
+    res.render("index", { products });
+  });
 });
 
 
