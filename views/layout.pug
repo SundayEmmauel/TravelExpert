@@ -69,29 +69,14 @@ html
         #navbarSupportedContent.collapse.navbar-collapse
           ul.navbar-nav.me-auto.mb-2.mb-lg-0
             li.nav-item
-              a.nav-link.active.btn-lg(aria-current='page' href='/') Home
+              a.nav-link.active.btn-lg.me-5(aria-current='page' href='/') Home
             li.nav-item
-              a.nav-link.active.btn-lg(href='about') About us
-            li.nav-item.dropdown
-              a#navbarDropdown.nav-link.dropdown-toggle.btn-lg(href='services' role='button' data-bs-toggle='dropdown' aria-expanded='false')
-                | Services
-              ul.dropdown-menu(aria-labelledby='navbarDropdown')
-                li
-                  a.dropdown-item(href='packages') Vacation Packages
-                li
-                  hr.dropdown-divider
-                li
-                  a.dropdown-item(href='flight') Flights
-                li
-                  a.dropdown-item(href='cars') Cars
-              li.nav-item
-                a.nav-link.active.btn-lg(href='/contact_us') Contact us
-
-
-            //- if currentUser !== 'manager'
-            //-   li
-            //-     a.nav-link.active.btn-lg(href='/product/add') Add Package
-            //- else
+              a.nav-link.active.btn-lg.me-5(href='about') About us
+            li.nav-item
+              a.nav-link.active.btn-lg.me-5(href='/') Our Services
+            li.nav-item
+              a.nav-link.active.btn-lg.me-5(href='/contact_us') Contact us
+             
               
           form.d-flex
             input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')

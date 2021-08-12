@@ -47,72 +47,24 @@ block content
 
 
       // --------------------------------- Packages -----------------------
-  .container
-    h2.bg-info Our Travel Packages
-      .row
-        if products
-          each prod in products
-            .card.col-lg-3.col-md-4.col-sm-12
-              a(href='/product/details/' + prod._id)
-                img.card-img-top(src=prod.image height="200")
-              .card-body
+  .body1.container-fluid
+    .container
+      h2 Our Travel Packages
+        .row
+          if products
+            each prod in products
+              .card.col-lg-4.col-md-4.col-sm-12.bg-light.text-dark
                 a(href='/product/details/' + prod._id)
-                  h5.card-title= prod.name
-                h6.card-text
-                  | description: #{prod.description}
-                  | Price: #{prod.price}
+                  img.card-img-top(src=prod.image height="200")
+                .card-body
+                  a(href='/product/details/' + prod._id)
+                    h5.card-title= prod.name
+                  h6.card-text
+                    | description: #{prod.description}
+                    | Price: #{prod.price}
 
-      //- a.btn.btn-primary.col-12(href='/product/add') Add Package 
-
-
-
-  //- .row.row-cols-1.row-cols-md-3.g-2
-  //-   .col
-  //-     .card.h-100
-  //-       img.card-img-top(src='images/il-vagabiondo-FlkxnZdebMk-unsplash.jpg' alt='...')
-  //-       .card-body
-  //-         h5.card-title Card title
-  //-         p.card-text
-  //-           | This is a longer card with supporting text below as a natural lead-in to
-  //-           | additional content. This content is a little bit longer.
-  //-   .col
-  //-     .card.h-100
-  //-       img.card-img-top(src='images/rafael-cisneros-mendez-y5PG8ZecXQI-unsplash.jpg' alt='...')
-  //-       .card-body
-  //-         h5.card-title Card title
-  //-         p.card-text This is a short card.
-  //-   .col
-  //-     .card.h-100
-  //-       img.card-img-top(src='images/lance-asper-Sm1V87fwLro-unsplash.jpg' alt='...')
-  //-       .card-body
-  //-         h5.card-title Card title
-  //-         p.card-text
-  //-           | This is a longer card with supporting text below as a natural lead-in to
-  //-           | additional content.
-  //-   .col
-  //-     .card.h-100
-  //-       img.card-img-top(src='images/yaopey-yong-H61cteSMfGo-unsplash.jpg' alt='...')
-  //-       .card-body
-  //-         h5.card-title Card title
-  //-         p.card-text
-  //-           | This is a longer card with supporting text below as a natural lead-in to
-  //-           | additional content. This content is a little bit longer.
-  //-   .col
-  //-     .card.h-100
-  //-       img.card-img-top(src='images/datingscout-YKxjbmN1CD8-unsplash.jpg' alt='...')
-  //-       .card-body
-  //-         h5.card-title Card title
-  //-         p.card-text
-  //-           | This is a longer card with supporting text below as a natural lead-in to
-  //-           | additional content. This content is a little bit longer.
-  //-   .col
-  //-     .card.h-100
-  //-       img.card-img-top(src='images/alexandre-chambon-aapSemzfsOk-unsplash.jpg' alt='...')
-  //-       .card-body
-  //-         h5.card-title Card title
-  //-         p.card-text
-  //-           | This is a longer card with supporting text below as a natural lead-in to
-  //-           | additional content. This content is a little bit longer.
-
-
- 
+        //- //if !currentUser === 'manager'||'agent'
+        //- li
+        //-   a.btn.btn-primary.col-12(href='/product/add') Add Package
+        //- br
+        //- br

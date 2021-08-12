@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const { Product } = require("../models/product");
-// const { Purchase } = require("../models/purchase");
+const { Purchase } = require("../models/purchase");
 const processErrors = require("./processErrors");
 
 /* GET the add form. */
