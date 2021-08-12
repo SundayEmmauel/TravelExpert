@@ -1,0 +1,39 @@
+extends layout
+
+block content
+
+   // Background image
+  .p-5.text-center.bg-image(style="\
+  background-image: url('images/beach003.jpg');\
+  height: 400px;\
+  ")
+    .mask(style='background-color: rgba(0, 0, 0, 0.2);')
+      .d-flex.justify-content-center.align-items-center.h-100
+        .text-white
+          h2.mb-3
+            | &quot;-Your reliable travel expert-&quot;
+            h1.mb-3.display-1 Contact Us
+            a.btn.btn-outline-light.btn-lg(href='packages' role='button') Vacation Packages
+
+      // --------------------------------- Packages -----------------------
+  .body1.container-fluid
+    .container
+      h2 Our Travel Packages
+        .row
+          if packages
+            each prod in packages
+              .card.col-lg-4.col-md-4.col-sm-12.bg-light.text-dark
+                a(href='/package/details/' + prod._id)
+                  img.card-img-top(src=prod.image height="200")
+                .card-body
+                  a(href='/package/details/' + prod._id)
+                    h5.card-title= prod.name
+                  h6.card-text
+                    | description: #{prod.description}
+                    | Price: #{prod.price}
+
+        //- //if !currentUser === 'manager'||'agent'
+        //- li
+        //-   a.btn.btn-primary.col-12(href='/package/add') Add Package
+        //- br
+        //- br

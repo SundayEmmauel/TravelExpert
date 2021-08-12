@@ -2,31 +2,32 @@ extends layout
 
 block content
   h1= title
-    
-  .container
-    
-    h2.bg-info Our Packages
-      if !prod
-        h3 No such package
-      else 
-        .card.col-sm-12
-          img.card-img-top.mx-auto(src=prod.image style=" max-width:200px;")
-          .card-body
-            h5.card-title= prod.name
-            h6.card-text
-              | description: #{prod.description}
-            h6.card-text
-              | Price: #{prod.price}
-          p.card-text
-            form(action='/package/buy' method='post')
-              .row
-                .col-sm-6
-                  input.mx-3(name='quantity' type='number' min=1 value=1)
-                  input(type='hidden' name="packageId" value= prod && prod._id)
-                .col-sm-6
-                  button.btn.btn-success.col-12(type='submit') Buy
-          p.card-text
-            a.btn.btn-primary.col-12(href='/package/edit/'+ prod._id) Edit
-          p.card-text
-            a.btn.btn-danger.col-12(href='/package/delete/'+ prod._id) Delete
+
+  .body1.container-fluid  
+    .container
+      
+      h2.bg-info.bg-transparent Our Packages
+        if !prod
+          h3 No such package
+        else 
+          .card.col-sm-12.bg-transparent.text-dark
+            img.card-img-top.mx-auto(src=prod.image style=" max-width:500px;")
+            .card-body
+              h5.card-title= prod.name
+              h6.card-text
+                | description: #{prod.description}
+              h6.card-text
+                | Price: #{prod.price}
+            p.card-text
+              form(action='/package/buy' method='post')
+                .row
+                  .col-sm-6
+                    input.mx-3(name='quantity' type='number' min=1 value=1)
+                    input(type='hidden' name="packageId" value= prod && prod._id)
+                  .col-sm-6
+                    button.btn.btn-success.col-12(type='submit') Buy
+            p.card-text
+              a.btn.btn-primary.col-12(href='/package/edit/'+ prod._id) Edit
+            p.card-text
+              a.btn.btn-danger.col-12(href='/package/delete/'+ prod._id) Delete
 

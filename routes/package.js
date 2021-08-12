@@ -10,13 +10,13 @@ router.get("/add", function (req, res, next) {
 });
 // Process the added package data
 router.post("/add", function (req, res, next) {
-  // const data = req.body;
-  const prod = new Package();
-  prod.PkgName = req.body.PkgName;
-  prod.PkgDesc = req.body.PkgDesc;
-  prod.PkgBasePrice = req.body.PkgBasePrice;
-  prod.PkgStartDate = req.body.PkgStartDate;
-  prod.PkgEndDate = req.body.PkgEndDate;
+  const data = req.body;
+  const prod = new Package(data);
+  // prod.PkgName = req.body.PkgName;
+  // prod.PkgDesc = req.body.PkgDesc;
+  // prod.Price = req.body.Price;
+  // prod.PkgStartDate = req.body.PkgStartDate;
+  // prod.PkgEndDate = req.body.PkgEndDate;
 
   // Make sure the image starts with /imagaes/, or add it to the image path
   if (prod.image && !prod.image.includes("/images/"))
