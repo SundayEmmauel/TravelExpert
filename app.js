@@ -12,6 +12,7 @@ var registerRouter = require('./routes/register');
 var registerRouter = require('./routes/register');
 var dataRouter = require("./routes/data");
 var packagesRouter = require("./routes/package");
+var servicesRouter = require("./routes/services");
 
 const mongoSanitize = require("express-mongo-sanitize");
 
@@ -52,6 +53,7 @@ app.use('/contact_us', contact_usRouter);
 app.use('/register', registerRouter);
 app.use("/data", dataRouter);
 app.use("/package", packagesRouter);
+app.use("/services", servicesRouter);
 
 // -------------------------------------------------------------
 // Configure the DB connection using Mongoose
