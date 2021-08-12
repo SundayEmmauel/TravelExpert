@@ -18,7 +18,7 @@ router.get('/', function (req, res, next) {
   Package.find({}, (err, packages) => {
     res.render("services", {
       pagetitle: 'Services',
-      dt: (new Date()).toString(),
+      // dt: (new Date()).toString(),
       packages
     });
   });
