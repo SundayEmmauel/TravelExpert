@@ -1,49 +1,55 @@
 var express = require("express");
 var router = express.Router();
-const { Product } = require("../models/product");
+const { Package } = require("../models/package");
 const { Purchase } = require("../models/purchase");
 const processErrors = require("./processErrors");
 
 /* GET the add form. */
 router.get("/add", function (req, res, next) {
-  res.render("productadd", { add: true });
+  res.render("packageadd", { add: true });
 });
-// Process the added product data
+// Process the added package data
 router.post("/add", function (req, res, next) {
-  const data = req.body;
-  const prod = new Product(data);
+  // const data = req.body;
+  const prod = new Package();
+  prod.PkgName = req.body.PkgName;
+  prod.PkgDesc = req.body.PkgDesc;
+  prod.PkgBasePrice = req.body.PkgBasePrice;
+  prod.PkgStartDate = req.body.PkgStartDate;
+  prod.PkgEndDate = req.body.PkgEndDate;
+
   // Make sure the image starts with /imagaes/, or add it to the image path
   if (prod.image && !prod.image.includes("/images/"))
     prod.image = "/images/" + prod.image;
   prod.save(function (err) {
     // Create a new record in the DB
-    if (err) return processErrors(err, "productadd", req, res, { add: true });
+    if (err) return processErrors(err, "packageadd", req, res, { add: true });
     res.redirect("/"); // Always redirect to another page after you process the form submission
   });
 });
 
-/* GET the Edit form with given a product Id. */
+/* GET the Edit form with given a package Id. */
 router.get("/edit/:prodid", function (req, res, next) {
   const prodid = req.params.prodid;
-  Product.findById(prodid, (err, prod) => {
+  Package.findById(prodid, (err, prod) => {
     if (err) console.log(err);
-    res.render("productadd", { prod, add: false });
+    res.render("packageadd", { prod, add: false });
   });
 });
-// Process the edited product data
+// Process the edited package data
 router.post("/edit/:prodid", function (req, res, next) {
   const prodid = req.params.prodid;
-  new Product(req.body).validate((err) => {
+  new Package(req.body).validate((err) => {
     // To validate the data before updating
     if (err)
-      return processErrors(err, "productadd", req, res, {
+      return processErrors(err, "packageadd", req, res, {
         add: false,
         prod: { ...req.body, _id: prodid },
       });
-    Product.findByIdAndUpdate(prodid, req.body, function (err) {
+    Package.findByIdAndUpdate(prodid, req.body, function (err) {
       if (err)
-        return processErrors(err, "productadd", req, res, { add: false });
-      res.redirect("/product/details/" + prodid);
+        return processErrors(err, "packageadd", req, res, { add: false });
+      res.redirect("/package/details/" + prodid);
     });
   });
 });
@@ -51,51 +57,51 @@ router.post("/edit/:prodid", function (req, res, next) {
 /* Delete a book, given its Id. */
 router.get("/delete/:prodid", function (req, res, next) {
   const prodid = req.params.prodid;
-  Product.findByIdAndDelete(prodid, (err) => {
+  Package.findByIdAndDelete(prodid, (err) => {
     if (err) console.log(err);
-    //req.session.msg = `Product deleted ${prodid}`;
+    //req.session.msg = `Package deleted ${prodid}`;
     res.redirect("/");
   });
 });
 
-/* GET the product details page, for the given product Id. */
+/* GET the package details page, for the given package Id. */
 router.get("/details/:prodid", function (req, res, next) {
   const prodid = req.params.prodid;
-  Product.findById(prodid, (err, prod) => {
+  Package.findById(prodid, (err, prod) => {
     if (err) console.log(err);
-    res.render("productdetails", { prod });
+    res.render("packagedetails", { prod });
   });
 });
 
-// Process the buy product data
+// Process the buy package data
 router.post("/buy", function (req, res, next) {
   const purchase = new Purchase();
   purchase.userId = 3;
-  purchase.productId = req.body.productId;
+  purchase.packageId = req.body.packageId;
   purchase.quantity = req.body.quantity;
   purchase.save(function (err) {
-    if (err) return processErrors(err, "productdetails", req, res, req.body);
-    res.redirect("/product/purchases");
+    if (err) return processErrors(err, "packagedetails", req, res, req.body);
+    res.redirect("/package/purchases");
   });
 });
 
 /* GET the purchases page. */
 router.get("/purchases/", function (req, res, next) {
   Purchase.find({ userId: 3 })
-    // Replace the productId with the corresponding product object from the products collection(table)
-    .populate("productId")
+    // Replace the packageId with the corresponding package object from the packages collection(table)
+    .populate("packageId")
     .exec((err, purchases) => {
       if (err) console.log(err);
       res.render("purchases", { purchases });
     });
 });
 
-/* Process the product return, sent as GET request, for the given product Id. */
+/* Process the package return, sent as GET request, for the given package Id. */
 router.get("/return/:purchaseid", function (req, res, next) {
   const purchaseid = req.params.purchaseid;
   Purchase.findOneAndDelete({ _id: purchaseid }, (err) => {
     if (err) console.log(err);
-    res.redirect("/product/purchases"); // Redirect to the purchases page
+    res.redirect("/package/purchases"); // Redirect to the purchases page
   });
 });
 

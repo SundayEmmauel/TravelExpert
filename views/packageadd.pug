@@ -34,13 +34,13 @@ block content
       form.row.g-3(method='POST' action="")
         .col-md-6
           label.form-label.text-light(for='inputname') Name
-          input#inputname.form-control(type='text' name='name' required value= prod && prod.name)
+          input#inputname.form-control(type='text' name='PkgName' required value= prod && prod.name)
         .col-md-6
           label.form-label.text-light(for='inputprice') Price
-          input#inputprice.form-control(type='number' placeholder='0.0' step="any" name='price' required  value=prod && prod.price)
+          input#inputprice.form-control(type='number' placeholder='0.0' step="any" name='PkgBasePrice' required  value=prod && prod.price)
         .col-12
           label.form-label.text-light(for='inputdescription') Description
-          textarea#inputdescription.form-control(rows='6' style="height: 200px" type='textarea' placeholder='Add package description here' name='description')
+          textarea#inputdescription.form-control(rows='6' style="height: 200px" type='textarea' placeholder='Add package description here' name='PkgeDsc')
             | #{prod && prod.description}
         .col-md-6
           label.form-label.text-light(for='inputimage') Image
@@ -51,11 +51,11 @@ block content
               | Add
             else 
               | Update
-          a.btn.btn-primary.col-12.mt-4(href=add ? '/' : '/product/details/' + (prod && prod._id)) Cancel
+          a.btn.btn-primary.col-12.mt-4(href=add ? '/' : '/package/details/' + (prod && prod._id)) Cancel
           // Another way for doing the cancel button
             if add
               a.btn.btn-primary.col-12.mt-4(href= '/' ) Cancel
             else 
-              a.btn.btn-primary.col-12.mt-4(href='/product/details/'+prod._id) Cancel
+              a.btn.btn-primary.col-12.mt-4(href='/package/details/'+prod._id) Cancel
 
       

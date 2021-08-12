@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var router = express.Router();
-const { Product } = require("../models/product");
+const { Package } = require("../models/package");
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -11,15 +11,15 @@ router.get('/', function (req, res, next) {
   //   dt: (new Date()).toString(),
   // });
 
-  if (req.user)
+  if (req.register)
     req.user.userDetails.then((details) => {
       console.log("Index back", details);
     });
-  Product.find({}, (err, products) => {
+  Package.find({}, (err, packages) => {
     res.render("index", {
-      products,
       pagetitle: 'Home',
       dt: (new Date()).toString(),
+      packages
     });
   });
 });

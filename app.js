@@ -11,7 +11,7 @@ var aboutRouter = require('./routes/about');
 var registerRouter = require('./routes/register');
 var registerRouter = require('./routes/register');
 var dataRouter = require("./routes/data");
-var productsRouter = require("./routes/product");
+var packagesRouter = require("./routes/package");
 
 const mongoSanitize = require("express-mongo-sanitize");
 
@@ -51,14 +51,14 @@ app.use('/about', aboutRouter);
 app.use('/contact_us', contact_usRouter);
 app.use('/register', registerRouter);
 app.use("/data", dataRouter);
-app.use("/product", productsRouter);
+app.use("/package", packagesRouter);
 
 // -------------------------------------------------------------
 // Configure the DB connection using Mongoose
 var mongoose = require("mongoose");
 // Set up a mongoose connection
 // var mongoDBurl = "mongodb://localhost:27017/travelStore";
-var mongoDBurl = "mongodb+srv://student_1:desktop@cluster0.p9dmi.mongodb.net/myTravelStore?retryWrites=true&w=majority";
+var mongoDBurl = "mongodb+srv://student_1:desktop@cluster0.p9dmi.mongodb.net/travelStore?retryWrites=true&w=majority";
 
 mongoose.connect(process.env.MONGO_URL || mongoDBurl, {
   useNewUrlParser: true,

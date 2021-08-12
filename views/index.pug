@@ -51,13 +51,13 @@ block content
     .container
       h2 Our Travel Packages
         .row
-          if products
-            each prod in products
+          if packages
+            each prod in packages
               .card.col-lg-4.col-md-4.col-sm-12.bg-light.text-dark
-                a(href='/product/details/' + prod._id)
+                a(href='/package/details/' + prod._id)
                   img.card-img-top(src=prod.image height="200")
                 .card-body
-                  a(href='/product/details/' + prod._id)
+                  a(href='/package/details/' + prod._id)
                     h5.card-title= prod.name
                   h6.card-text
                     | description: #{prod.description}
@@ -65,6 +65,6 @@ block content
 
         //- //if !currentUser === 'manager'||'agent'
         //- li
-        //-   a.btn.btn-primary.col-12(href='/product/add') Add Package
+        //-   a.btn.btn-primary.col-12(href='/package/add') Add Package
         //- br
         //- br
