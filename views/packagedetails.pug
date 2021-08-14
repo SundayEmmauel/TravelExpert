@@ -24,10 +24,21 @@ block content
                   .col-sm-6
                     input.mx-3(name='quantity' type='number' min=1 value=1)
                     input(type='hidden' name="packageId" value= prod && prod._id)
-                  .col-sm-6
+                if !currentUser
+                  .col-sm-3
+                    a.me-5.btn.btn-outline-primary.btn-md(href='/register/login') Login
+                else 
+                  .col-sm-3
                     button.btn.btn-success.col-12(type='submit') Buy
-            p.card-text
-              a.btn.btn-primary.col-12(href='/package/edit/'+ prod._id) Edit
-            p.card-text
-              a.btn.btn-danger.col-12(href='/package/delete/'+ prod._id) Delete
+                //- if currentUser.role === 'manager'||'agent'
+          
+                //-   p.card-text
+                //-     a.btn.btn-primary.col-12(href='/package/edit/'+ prod._id) Edit
+                //-   p.card-text
+                //-     a.btn.btn-danger.col-12(href='/package/delete/'+ prod._id) Delete
+                 
+                //-   li.nav-item
+                    a.me-5.btn.btn-outline-primary.btn-md(href='/log-out') Logout
+
+            
 

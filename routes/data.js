@@ -1,5 +1,5 @@
 // var serverOne = process.env.DATA_URL || "http://localhost:8050/";
-var serverOne = process.env.DATA_URL || "http://127.0.0.1:8050/";
+var serverOne = process.env.DATA_URL || "http://127.0.0.1:8050/" || "https://datafile1.azurewebsites.net/";
 
 module.exports = function (req, res) {
   if (!req.user || req.user.role != "manager") {

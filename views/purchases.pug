@@ -12,18 +12,17 @@ block content
         .row
           each purchase in purchases
             .card.col-sm-12
-              img.card-img-top.mx-auto(src=purchase.packageId.image style=" max-width:50px;")              
-              h5= purchase.packageId.name
+              img.card-img-top.mx-auto(src=purchase.productId.image style=" max-width:50px;")              
+              h5= purchase.productId.name
               h6
-                | description: #{purchase.packageId.description}
+                | description: #{purchase.productId.description}
               h6
                 | Quantity : #{purchase.quantity}
               h6
-                | Unit Price: #{purchase.packageId.price}
+                | Unit Price: #{purchase.productId.price}
               h6
-                | Total Price: #{purchase.packageId.price * purchase.quantity}
+                | Total Price: #{purchase.productId.price * purchase.quantity}
               p.card-text
-                form(action='/package/return/'+purchase._id method='get')
+                form(action='/product/return/'+purchase._id method='get')
                   .col-sm-12
                     button.btn.btn-success.col-12(type='submit') Return
-              
